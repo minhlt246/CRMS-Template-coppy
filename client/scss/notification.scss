@@ -1,0 +1,68 @@
+@use "./breakpoint.scss" as *;
+
+// Notification Badge
+.notification-badge {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 6px;
+    height: 6px;
+    background-color: #FD5812;
+    border-radius: 50px;
+}
+
+// Notification Body
+.notification-body {
+    min-height: 280px;
+    max-height: 280px;
+}
+
+// Notification Item
+.notification-item {
+    background-color: var(--white);
+    position: relative;
+    cursor: pointer;
+    border-radius: 0 !important;
+
+    .notification-item-close {
+        position: absolute;
+        right: 0;
+        display: none;
+        top: 0;
+        bottom: 0;
+        padding: 15px;
+        background-color: var(--light);
+    }
+
+    .notification-action {
+        display: none !important;
+    }
+
+    .notification-read {
+        display: block;
+        width: 8px;
+        height: 8px;
+    }
+
+    .notification-badge {
+        height: 22px;
+        width: 22px;
+        text-align: center;
+        color: var(--white);
+        top: -12px;
+        right: -8px;
+        border: 2px solid var(--white);
+        line-height: 18px;
+        font-size: 11px;
+    }
+
+    &:hover {
+        .notification-item-close {
+            display: block;
+        }
+
+        .notification-action {
+            display: flex !important;
+        }
+    }
+}

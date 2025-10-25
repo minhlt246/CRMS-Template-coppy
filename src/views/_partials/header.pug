@@ -1,0 +1,258 @@
+//- Topbar Start
+header.navbar-header
+    .page-container.topbar-menu
+        .d-flex.align-items-center.gap-2
+            //- Logo
+            a.logo(href="../client/index.html")
+                //- Logo Normal
+                span.logo-light
+                    span.logo-lg
+                        img(src="../client/img/logo.svg" alt="logo")
+                    span.logo-sm
+                        img(src="../client/img/logo-small.svg" alt="small logo")
+                //- Logo Dark
+                span.logo-dark
+                    span.logo-lg
+                        img(src="../client/img/logo-white.svg" alt="dark logo")
+            
+            //- Sidebar Mobile Button
+            a#mobile_btn.mobile-btn(href="#sidebar")
+                i.ti.ti-menu-deep.fs-24
+            
+            button.sidenav-toggle-btn.btn.border-0.p-0#toggle_btn2
+                i.ti.ti-arrow-bar-to-right
+            
+            //- Search
+            .me-auto.d-flex.align-items-center.header-search.d-lg-flex.d-none
+                //- Search
+                .input-icon.position-relative.me-2
+                    input.form-control(type="text" placeholder="Search Keyword")
+                    span.input-icon-addon.d-inline-flex.p-0.header-search-icon
+                        i.ti.ti-command
+                //- /Search
+        
+        .d-flex.align-items-center
+            //- Search for Mobile
+            .header-item.d-flex.d-lg-none.me-2
+                button.topbar-link.btn(type="button" data-bs-toggle="modal" data-bs-target="#searchModal")
+                    i.ti.ti-search.fs-16
+            
+            //- Minimize
+            .header-item
+                .dropdown.me-2
+                    a.btn.topbar-link.btnFullscreen(href="javascript:void(0);")
+                        i.ti.ti-maximize
+            //- Minimize
+            
+            //- Light/Dark Mode Button
+            .header-item.d-none.d-sm-flex.me-2
+                button.topbar-link.btn.topbar-link#light-dark-mode(type="button")
+                    i.ti.ti-moon.fs-16
+            
+            //- pages
+            .header-item.d-none.d-sm-flex
+                .dropdown.me-2
+                    a.btn.topbar-link.topbar-teal-link(href="javascript:void(0);" data-bs-toggle="dropdown")
+                        i.ti.ti-layout-grid-add
+                    .dropdown-menu.dropdown-menu-end.dropdown-menu-md.p-2
+                        //- Item
+                        a.dropdown-item(href="../client/contacts.html")
+                            .d-flex.align-items-center.justify-content-between
+                                .div-container
+                                    span.d-flex.mb-1.fw-semibold.text-dark Contacts
+                                    span.fs-13 View All the Contacts
+                                i.ti.ti-chevron-right-pipe.text-dark
+                        
+                        //- Item
+                        a.dropdown-item(href="../client/pipeline.html")
+                            .d-flex.align-items-center.justify-content-between
+                                .div-container
+                                    span.d-flex.mb-1.fw-semibold.text-dark Pipeline
+                                    span.fs-13 View All the Pipeline
+                                i.ti.ti-chevron-right-pipe.text-dark
+                        
+                        //- Item
+                        a.dropdown-item(href="../client/activities.html")
+                            .d-flex.align-items-center.justify-content-between
+                                .div-container
+                                    span.d-flex.mb-1.fw-semibold.text-dark Activities
+                                    span.fs-13 Activities
+                                i.ti.ti-chevron-right-pipe.text-dark
+                        
+                        //- Item
+                        a.dropdown-item(href="../client/analytics.html")
+                            .d-flex.align-items-center.justify-content-between
+                                .div-container
+                                    span.d-flex.mb-1.fw-semibold.text-dark Analytics
+                                    span.fs-13 Analytics
+                                i.ti.ti-chevron-right-pipe.text-dark
+            
+            //- faq
+            .header-item.d-none.d-sm-flex
+                .dropdown.me-2
+                    a.btn.topbar-link.topbar-indigo-link(href="../client/faq.html")
+                        i.ti.ti-help-hexagon
+            
+            //- report
+            .header-item.d-none.d-sm-flex
+                .dropdown.me-2
+                    a.btn.topbar-link.topbar-warning-link(href="../client/lead-reports.html")
+                        i.ti.ti-chart-pie
+            
+            .header-line
+            
+            //- message
+            .header-item
+                .dropdown.me-2
+                    a.btn.topbar-link(href="../client/chat.html")
+                        i.ti.ti-message-circle-exclamation
+                        span.badge.rounded-pill 14
+            
+            //- Notification Dropdown
+            .header-item
+                .dropdown.me-2
+                    button.topbar-link.btn.topbar-link.dropdown-toggle.drop-arrow-none(type="button" data-bs-toggle="dropdown" data-bs-offset="0,24" aria-haspopup="false" aria-expanded="false")
+                        i.ti.ti-bell-check.fs-16.animate-ring
+                        span.badge.rounded-pill 10
+                    
+                    .dropdown-menu.p-0.dropdown-menu-end.dropdown-menu-lg(style="min-height: 300px;")
+                        .p-2.border-bottom
+                            .row.align-items-center
+                                .col
+                                    h6.m-0.fs-16.fw-semibold Notifications
+                        
+                        //- Notification Body
+                        .notification-body.position-relative.z-2.rounded-0(data-simplebar)
+                            //- Item
+                            .dropdown-item.notification-item.py-3.text-wrap.border-bottom#notification-1
+                                .d-flex
+                                    .me-2.position-relative.flex-shrink-0
+                                        img.avatar-md.rounded-circle(src="../client/img/users/user-01.jpg" alt="Img")
+                                    .flex-grow-1
+                                        p.mb-0.fw-medium.text-dark John Doe
+                                        p.mb-1.text-wrap
+                                            | left 6 comments on 
+                                            span.fw-medium.text-dark Isla Nublar SOC2 compliance report
+                                        .d-flex.justify-content-between.align-items-center
+                                            span.fs-12
+                                                i.ti.ti-clock.me-1
+                                                | 4 min ago
+                                            .notification-action.d-flex.align-items-center.float-end.gap-2
+                                                a.notification-read.rounded-circle.bg-danger(href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read")
+                                                button.btn.rounded-circle.p-0(data-dismissible="#notification-1")
+                                                    i.ti.ti-x
+                            
+                            //- Item
+                            .dropdown-item.notification-item.py-3.text-wrap.border-bottom#notification-2
+                                .d-flex
+                                    .me-2.position-relative.flex-shrink-0
+                                        img.avatar-md.rounded-circle(src="../client/img/users/user-12.jpg" alt="Img")
+                                    .flex-grow-1
+                                        p.mb-0.fw-medium.text-dark Thomas William
+                                        p.mb-1.text-wrap
+                                            | "Oh, I finished de-bugging the phones, but the system's compiling for eighteen minutes, or twenty..."
+                                        .d-flex.justify-content-between.align-items-center
+                                            span.fs-12
+                                                i.ti.ti-clock.me-1
+                                                | 8 min ago
+                                            .notification-action.d-flex.align-items-center.float-end.gap-2
+                                                a.notification-read.rounded-circle.bg-danger(href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read")
+                                                button.btn.rounded-circle.p-0(data-dismissible="#notification-2")
+                                                    i.ti.ti-x
+                            
+                            //- Item
+                            .dropdown-item.notification-item.py-3.text-wrap.border-bottom#notification-3
+                                .d-flex
+                                    .me-2.position-relative.flex-shrink-0
+                                        img.avatar-md.rounded-circle(src="../client/img/profiles/avatar-12.jpg" alt="Img")
+                                    .flex-grow-1
+                                        p.mb-0.fw-medium.text-dark Sarah Anderson
+                                        p.mb-1.text-wrap
+                                            | attached a file to 
+                                            span.fw-medium.text-dark Isla Nublar SOC2 compliance report
+                                        .d-flex.justify-content-between.align-items-center
+                                            span.fs-12
+                                                i.ti.ti-clock.me-1
+                                                | 15 min ago
+                                            .notification-action.d-flex.align-items-center.float-end.gap-2
+                                                a.notification-read.rounded-circle.bg-danger(href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read")
+                                                button.btn.rounded-circle.p-0(data-dismissible="#notification-3")
+                                                    i.ti.ti-x
+                            
+                            //- Item
+                            .dropdown-item.notification-item.py-3.text-wrap#notification-4
+                                .d-flex
+                                    .me-2.position-relative.flex-shrink-0
+                                        img.avatar-md.rounded-circle(src="../client/img/profiles/avatar-08.jpg" alt="Img")
+                                    .flex-grow-1
+                                        p.mb-0.fw-medium.text-dark Ann McClure
+                                        p.mb-1.text-wrap
+                                            | mentioned you in 
+                                            span.fw-medium.text-dark Bug Fix Review - Task #432
+                                        .d-flex.justify-content-between.align-items-center
+                                            span.fs-12
+                                                i.ti.ti-clock.me-1
+                                                | 20 min ago
+                                            .notification-action.d-flex.align-items-center.float-end.gap-2
+                                                a.notification-read.rounded-circle.bg-danger(href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read")
+                                                button.btn.rounded-circle.p-0(data-dismissible="#notification-4")
+                                                    i.ti.ti-x
+                        
+                        //- View All
+                        .p-2.rounded-bottom.border-top.text-center
+                            a.text-center.text-decoration-underline.fs-14.mb-0(href="../client/notifications.html")
+                                | View All Notifications
+            
+            //- User Dropdown
+            .dropdown.profile-dropdown.d-flex.align-items-center.justify-content-center
+                a.topbar-link.dropdown-toggle.drop-arrow-none.position-relative(href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-offset="0,22" aria-haspopup="false" aria-expanded="false")
+                    img.rounded-1.d-flex(src="../client/img/users/user-40.jpg" width="38" alt="user-image")
+                    span.online.text-success
+                        i.ti.ti-circle-filled.d-flex.bg-white.rounded-circle.border.border-1.border-white
+                
+                .dropdown-menu.dropdown-menu-end.dropdown-menu-md.p-2
+                    .d-flex.align-items-center.bg-light.rounded-3.p-2.mb-2
+                        img.rounded-circle(src="../client/img/users/user-40.jpg" width="42" height="42" alt="Img")
+                        .ms-2
+                            p.fw-medium.text-dark.mb-0 Katherine Brooks
+                            span.d-block.fs-13 Installer
+                    
+                    //- Item
+                    a.dropdown-item(href="../client/profile-settings.html")
+                        i.ti.ti-user-circle.me-1.align-middle
+                        span.align-middle Profile Settings
+                    
+                    //- item
+                    .form-check.form-switch.form-check-reverse.d-flex.align-items-center.justify-content-between.dropdown-item.mb-0
+                        label.form-check-label(for="notify")
+                            i.ti.ti-bell
+                            | Notifications
+                        input.form-check-input.me-0(type="checkbox" role="switch" id="notify")
+                    
+                    //- Item
+                    a.dropdown-item(href="javascript:void(0);")
+                        i.ti.ti-help-circle.me-1.align-middle
+                        span.align-middle Help & Support
+                    
+                    //- Item
+                    a.dropdown-item(href="../client/profile-settings.html")
+                        i.ti.ti-settings.me-1.align-middle
+                        span.align-middle Settings
+                    
+                    //- Item
+                    .pt-2.mt-2.border-top
+                        a.dropdown-item.text-danger(href="../client/login.html")
+                            i.ti.ti-logout.me-1.fs-17.align-middle
+                            span.align-middle Sign Out
+//- Topbar End
+
+//- Search Modal
+.modal.fade#searchModal
+    .modal-dialog.modal-lg
+        .modal-content.bg-transparent
+            .card.shadow-none.mb-0
+                .px-3.py-2.d-flex.flex-row.align-items-center#search-top
+                    i.ti.ti-search.fs-22
+                    input.form-control.border-0(type="search" placeholder="Search")
+                    button.btn.p-0(type="button" data-bs-dismiss="modal" aria-label="Close")
+                        i.ti.ti-x.fs-22    

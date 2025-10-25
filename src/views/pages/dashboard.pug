@@ -1,0 +1,228 @@
+extends ../_layouts/master
+
+block content
+  .dashboard-page
+    // Dashboard Page Header
+    .page-header
+      .container-fluid
+        .row
+          .col-12
+            h1.page-title Dashboard
+            p.page-description Welcome to your CRM dashboard
+    
+    // Dashboard Statistics
+    .dashboard-stats
+      .container-fluid
+        .row
+          .col-md-3
+            .stat-card
+              .stat-icon.primary
+                i.fa.fa-users
+              .stat-value 1,234
+              .stat-label Total Users
+              .stat-change.positive +12%
+          .col-md-3
+            .stat-card
+              .stat-icon.success
+                i.fa.fa-dollar-sign
+              .stat-value $45,678
+              .stat-label Revenue
+              .stat-change.positive +8%
+          .col-md-3
+            .stat-card
+              .stat-icon.warning
+                i.fa.fa-shopping-cart
+              .stat-value 89
+              .stat-label Orders
+              .stat-change.negative -3%
+          .col-md-3
+            .stat-card
+              .stat-icon.info
+                i.fa.fa-chart-line
+              .stat-value 67%
+              .stat-label Growth
+              .stat-change.positive +5%
+    
+    // Dashboard Filter Section
+    .dashboard-filter
+      .container-fluid
+        .filter-row
+          .filter-group
+            label(for="dashboardDateRange") Date Range
+            input#dashboardDateRange.form-control.flatpickr-input(type="text" placeholder="Select date range")
+          .filter-group
+            label(for="dashboardPeriod") Period
+            select#dashboardPeriod.form-control
+              option(value="7") Last 7 days
+              option(value="30") Last 30 days
+              option(value="90") Last 90 days
+              option(value="365") Last year
+          .filter-group
+            label(for="dashboardMetric") Metric
+            select#dashboardMetric.form-control
+              option(value="revenue") Revenue
+              option(value="users") Users
+              option(value="orders") Orders
+              option(value="growth") Growth
+          .filter-group
+            button.btn.btn-primary Apply
+            button.btn.btn-secondary Reset
+    
+    // Dashboard Widgets
+    .dashboard-widgets
+      .container-fluid
+        .row
+          .col-md-6
+            .widget
+              .widget-header
+                .widget-title Revenue Chart
+                .widget-actions
+                  button.btn.btn-sm.btn-outline-secondary
+                    i.fa.fa-download
+              .widget-body
+                .widget-content
+                  canvas#revenueChart(width="400" height="200")
+                .widget-footer
+                  .text-muted Last updated: 2 minutes ago
+          .col-md-6
+            .widget
+              .widget-header
+                .widget-title User Growth
+                .widget-actions
+                  button.btn.btn-sm.btn-outline-secondary
+                    i.fa.fa-refresh
+              .widget-body
+                .widget-content
+                  canvas#userChart(width="400" height="200")
+                .widget-footer
+                  .text-muted Last updated: 5 minutes ago
+    
+    // Dashboard Charts
+    .dashboard-charts
+      .container-fluid
+        .row
+          .col-md-8
+            .chart-container
+              .chart-header
+                .chart-title Sales Overview
+                .chart-controls
+                  button.btn.btn-sm.btn-outline-primary Day
+                  button.btn.btn-sm.btn-outline-secondary Week
+                  button.btn.btn-sm.btn-outline-secondary Month
+              .chart-body
+                canvas#salesChart(width="800" height="400")
+          .col-md-4
+            .chart-container
+              .chart-header
+                .chart-title Top Products
+                .chart-controls
+                  button.btn.btn-sm.btn-outline-secondary
+                    i.fa.fa-ellipsis-h
+              .chart-body
+                canvas#productsChart(width="400" height="400")
+    
+    // Recent Activities
+    .recent-activities
+      .container-fluid
+        .row
+          .col-12
+            .activities-header
+              .activities-title Recent Activities
+              .activities-link
+                a(href="#") View All
+            .activities-list
+              .activity-item
+                .activity-icon.primary
+                  i.fa.fa-user-plus
+                .activity-content
+                  .activity-text New user registered: John Doe
+                  .activity-time 2 minutes ago
+              .activity-item
+                .activity-icon.success
+                  i.fa.fa-shopping-cart
+                .activity-content
+                  .activity-text New order received: #12345
+                  .activity-time 15 minutes ago
+              .activity-item
+                .activity-icon.warning
+                  i.fa.fa-exclamation-triangle
+                .activity-content
+                  .activity-text Low inventory alert: Product ABC
+                  .activity-time 1 hour ago
+              .activity-item
+                .activity-icon.info
+                  i.fa.fa-envelope
+                .activity-content
+                  .activity-text Email sent to customer: support@example.com
+                  .activity-time 2 hours ago
+    
+    // Page-specific CSS
+    style.
+      /* Import page-specific CSS */
+      @import url('../../public/scss/pages/dashboard.css');
+    
+    // Page-specific JavaScript
+    script.
+      // Initialize page-specific plugins
+      $(document).ready(function() {
+        // Initialize DataTables
+        $('#dashboardTable').DataTable({
+          responsive: true,
+          pageLength: 10,
+          order: [[0, 'desc']]
+        });
+        
+        // Initialize Flatpickr
+        flatpickr("#dashboardDateRange", {
+          mode: "range",
+          dateFormat: "Y-m-d"
+        });
+        
+        // Initialize Select2
+        $('#dashboardPeriod').select2({
+          placeholder: 'Select period...',
+          allowClear: true
+        });
+        
+        $('#dashboardMetric').select2({
+          placeholder: 'Select metric...',
+          allowClear: true
+        });
+        
+        // Initialize Charts
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'Revenue',
+              data: [12000, 19000, 3000, 5000, 2000, 3000],
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+        
+        // User Chart
+        const userCtx = document.getElementById('userChart').getContext('2d');
+        new Chart(userCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Active', 'Inactive', 'Pending'],
+            datasets: [{
+              data: [300, 50, 100],
+              backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+      });

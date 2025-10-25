@@ -1,0 +1,419 @@
+// ========================================
+// SCSS Mixins
+// ========================================
+
+@use "sass:map";
+@use "sass:math";
+
+// Breakpoint Mixins
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+@mixin media-breakpoint-up($name) {
+    $min: map.get($breakpoints, $name);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-down($name) {
+    $max: map.get($breakpoints, $name);
+
+    @if $max {
+        @media (max-width: $max - 0.02px) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-between($lower, $upper) {
+    $min: map.get($breakpoints, $lower);
+    $max: map.get($breakpoints, $upper);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max - 0.02px) {
+            @content;
+        }
+    }
+
+    @else if $min !=null {
+        @include media-breakpoint-up($lower) {
+            @content;
+        }
+    }
+
+    @else if $max !=null {
+        @include media-breakpoint-down($upper) {
+            @content;
+        }
+    }
+}
+
+// Button Mixins
+@mixin button-variant($background, $border, $color: #fff, $hover-background: $background, $hover-border: $border, $hover-color: $color) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+
+    &:hover {
+        color: $hover-color;
+        background-color: $hover-background;
+        border-color: $hover-border;
+    }
+
+    &:focus,
+    &.focus {
+        color: $hover-color;
+        background-color: $hover-background;
+        border-color: $hover-border;
+        box-shadow: 0 0 0 0.2rem rgba($background, 0.5);
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $color;
+        background-color: $background;
+        border-color: $border;
+    }
+}
+
+@mixin button-outline-variant($color, $color-hover: #fff, $active-background: $color, $active-border: $color) {
+    color: $color;
+    border-color: $color;
+
+    &:hover {
+        color: $color-hover;
+        background-color: $active-background;
+        border-color: $active-border;
+    }
+
+    &:focus,
+    &.focus {
+        box-shadow: 0 0 0 0.2rem rgba($color, 0.5);
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $color;
+        background-color: transparent;
+    }
+}
+
+// Form Mixins
+@mixin form-control-focus($color: #0d6efd) {
+    &:focus {
+        color: var(--gray-700);
+        background-color: var(--white);
+        border-color: lighten($color, 25%);
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+    }
+}
+
+@mixin form-validation-state($state, $color) {
+    .#{$state}-feedback {
+        display: block;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: $color;
+    }
+
+    .#{$state}-tooltip {
+        position: absolute;
+        top: 100%;
+        z-index: 5;
+        display: none;
+        max-width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.1rem;
+        font-size: 0.875rem;
+        line-height: 1;
+        color: #ffffff;
+        background-color: rgba($color, 0.8);
+        border-radius: var(--border-radius);
+    }
+
+    .form-control {
+        border-color: $color;
+
+        &:focus {
+            border-color: $color;
+            box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+        }
+    }
+
+    .form-check-input {
+        border-color: $color;
+
+        &:checked {
+            background-color: $color;
+            border-color: $color;
+        }
+    }
+}
+
+// Utility Mixins
+@mixin sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@mixin sr-only-focusable {
+
+    &:active,
+    &:focus {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        clip: auto !important;
+        white-space: normal !important;
+    }
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin clearfix {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+// Animation Mixins
+@mixin transition($transition...) {
+    transition: $transition;
+}
+
+@mixin transition-property($transition-property...) {
+    transition-property: $transition-property;
+}
+
+@mixin transition-duration($transition-duration...) {
+    transition-duration: $transition-duration;
+}
+
+@mixin transition-timing-function($timing-function...) {
+    transition-timing-function: $timing-function;
+}
+
+@mixin transition-delay($transition-delay...) {
+    transition-delay: $transition-delay;
+}
+
+// Transform Mixins
+@mixin transform($transform...) {
+    transform: $transform;
+}
+
+@mixin transform-origin($origin...) {
+    transform-origin: $origin;
+}
+
+@mixin transform-style($style) {
+    transform-style: $style;
+}
+
+// Flexbox Mixins
+@mixin flex {
+    display: flex;
+}
+
+@mixin inline-flex {
+    display: inline-flex;
+}
+
+@mixin flex-direction($direction) {
+    flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap) {
+    flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify) {
+    justify-content: $justify;
+}
+
+@mixin align-items($align) {
+    align-items: $align;
+}
+
+@mixin align-content($align) {
+    align-content: $align;
+}
+
+@mixin flex-fill {
+    flex: 1 1 auto;
+}
+
+@mixin flex-grow($grow) {
+    flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink) {
+    flex-shrink: $shrink;
+}
+
+@mixin flex-basis($basis) {
+    flex-basis: $basis;
+}
+
+// Grid Mixins
+@mixin make-container($padding-x: var(--spacing-md)) {
+    width: 100%;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin make-row($gutter-x: var(--spacing-md)) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$gutter-x / 2;
+    margin-left: -$gutter-x / 2;
+}
+
+@mixin make-col($size, $columns: 12, $gutter-x: var(--spacing-md)) {
+    flex: 0 0 math.percentage(math.div($size, $columns));
+    max-width: math.percentage(math.div($size, $columns));
+    padding-right: $gutter-x / 2;
+    padding-left: $gutter-x / 2;
+}
+
+// Shadow Mixins
+@mixin box-shadow($shadow...) {
+    box-shadow: $shadow;
+}
+
+@mixin text-shadow($shadow...) {
+    text-shadow: $shadow;
+}
+
+// Border Mixins
+@mixin border-radius($radius...) {
+    border-radius: $radius;
+}
+
+@mixin border-top-radius($radius) {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+
+// Background Mixins
+@mixin gradient-bg($start-color, $end-color, $deg: 45deg) {
+    background: $start-color;
+    background: linear-gradient($deg, $start-color, $end-color);
+}
+
+@mixin gradient-x($start-color, $end-color, $start-percent: 0%, $end-percent: 100%) {
+    background: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+}
+
+@mixin gradient-y($start-color, $end-color, $start-percent: 0%, $end-percent: 100%) {
+    background: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+}
+
+// Typography Mixins
+@mixin font-size($size, $line-height: null) {
+    font-size: $size;
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+}
+
+@mixin text-emphasis-variant($color) {
+    color: $color;
+
+    a & {
+        color: darken($color, 10%);
+
+        &:hover,
+        &:focus {
+            color: darken($color, 15%);
+        }
+    }
+}
+
+// List Mixins
+@mixin list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+@mixin list-inline {
+    padding-left: 0;
+    list-style: none;
+
+    >li {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+// Table Mixins
+@mixin table-variant($state, $background) {
+    .table-#{$state} {
+        --bs-table-color: #ffffff;
+        --bs-table-bg: #{$background};
+        --bs-table-border-color: #{lighten($background, 10%)};
+        --bs-table-striped-bg: #{lighten($background, 5%)};
+        --bs-table-striped-color: #ffffff;
+        --bs-table-active-bg: #{lighten($background, 5%)};
+        --bs-table-active-color: #ffffff;
+        --bs-table-hover-bg: #{lighten($background, 5%)};
+        --bs-table-hover-color: #ffffff;
+        color: var(--bs-table-color);
+        border-color: var(--bs-table-border-color);
+    }
+}

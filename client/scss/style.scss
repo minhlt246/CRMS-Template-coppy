@@ -1,0 +1,10 @@
+@use "./breakpoint.scss" as *;
+@use "./galaxy.scss" as galaxy;
+@use "./login-crms.scss" as login-crms;
+@use "./notification.scss" as notification;
+@use "./animations.scss" as animations;
+@use "./sidebar.scss" as sidebar;
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+}

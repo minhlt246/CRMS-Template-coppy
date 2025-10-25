@@ -1,0 +1,109 @@
+
+/* Inter Font Family */
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-SemiBoldItalic.ttf") format("truetype");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-ExtraBoldItalic.ttf") format("truetype");
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../webfonts/Inter-font/Inter-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Glyphicons Halflings";
+    src: url("glyphicons-halflings-regular.eot");
+    src: url("glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"),
+    url("glyphicons-halflings-regular.woff2") format("woff2"),
+    url("glyphicons-halflings-regular.woff") format("woff"),
+    url("glyphicons-halflings-regular.ttf") format("truetype"),
+    url("glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+html, body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+}

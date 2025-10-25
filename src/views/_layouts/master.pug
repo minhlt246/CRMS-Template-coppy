@@ -1,0 +1,52 @@
+doctype html
+html
+    head
+        meta(http-equiv='X-UA-Compatible' content='IE=Edge')
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        meta(name='keywords' content='')
+        meta(name='description' content='')
+        title CRM System
+        link(rel='icon' href='../client/images/favicon.png' type='image/gif' sizes='16x16')
+        // ========================================
+        // CSS Loading Order - CRMS Template
+        // ========================================
+        
+        // 1. Bootstrap CSS
+        link(rel='stylesheet' href='../client/css/bootstrap.min.css')
+        
+        // 2. Tabler Icon CSS
+        link(rel='stylesheet' href='../client/plugins/tabler-icons/tabler-icons.min.css')
+        
+        // 3. Simplebar CSS
+        link(rel='stylesheet' href='../client/plugins/simplebar/simplebar.min.css')
+        
+        // 4. Main CSS (Common CSS - Tất cả trang đều có)
+        link(rel='stylesheet' href='../client/css/style.css' id='app-style')
+        
+        // 5. Additional Plugin CSS (Optional - Load after main CSS)
+        link(rel='stylesheet' href='../client/css/hover-min.css')
+        link(rel='stylesheet' href='../client/css/animate.css')
+        link(rel='stylesheet' href='../client/slick/slick.css')
+        link(rel='stylesheet' href='../client/fonts/fontstyle.css')
+        
+
+    body
+        include ../_partials/header
+        section
+            block content
+            
+        a.back-to-top(href='javascript:void(0)')
+            i.fas.fa-arrow-to-top.floating               
+        // main js
+        script(src='../client/js/all.min.js')
+        script(src='../client/js/jquery.min.js')
+        script(src='../client/js/bootstrap.bundle.min.js')
+        script(src='../client/slick/slick.js')
+        script(src='../client/wow/wow.min.js')
+        script(src='../client/js/main.js')
+        
+        script.
+            new WOW().init();
+
+            

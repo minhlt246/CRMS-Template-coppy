@@ -1,0 +1,145 @@
+extends ../_layouts/master
+
+block content
+  .domain-page
+    // Domain Page Header
+    .page-header
+      .container-fluid
+        .row
+          .col-12
+            h1.page-title Domain Management
+            p.page-description Manage your domains and DNS settings
+    
+    // Domain Statistics
+    .domain-stats
+      .container-fluid
+        .row
+          .col-md-3
+            .stat-card
+              .stat-icon.primary
+                i.fa.fa-globe
+              .stat-value 12
+              .stat-label Total Domains
+          .col-md-3
+            .stat-card
+              .stat-icon.success
+                i.fa.fa-check-circle
+              .stat-value 10
+              .stat-label Active
+          .col-md-3
+            .stat-card
+              .stat-icon.warning
+                i.fa.fa-exclamation-triangle
+              .stat-value 2
+              .stat-label Pending
+          .col-md-3
+            .stat-card
+              .stat-icon.danger
+                i.fa.fa-times-circle
+              .stat-value 0
+              .stat-label Expired
+    
+    // Domain Filter Section
+    .domain-filter
+      .container-fluid
+        .filter-row
+          .filter-group
+            label(for="domainDateRange") Date Range
+            input#domainDateRange.form-control.flatpickr-input(type="text" placeholder="Select date range")
+          .filter-group
+            label(for="domainStatusFilter") Status
+            select#domainStatusFilter.form-control
+              option(value="") All Status
+              option(value="active") Active
+              option(value="pending") Pending
+              option(value="expired") Expired
+          .filter-group
+            label(for="domainSearch") Search
+            input#domainSearch.form-control(type="text" placeholder="Search domains...")
+          .filter-group
+            button.btn.btn-primary Search
+            button.btn.btn-secondary Reset
+    
+    // Domain Content
+    .container-fluid
+      .row
+        .col-12
+          .domain-content
+            // Domain Table
+            .table-responsive
+              table#domainTable.table.table-striped.table-hover
+                thead
+                  tr
+                    th Domain Name
+                    th Status
+                    th Expiry Date
+                    th Registrar
+                    th Actions
+                tbody
+                  tr
+                    td example.com
+                    td
+                      span.badge.bg-success Active
+                    td 2024-12-31
+                    td GoDaddy
+                    td
+                      .btn-group
+                        button.btn.btn-sm.btn-outline-primary Edit
+                        button.btn.btn-sm.btn-outline-info DNS
+                        button.btn.btn-sm.btn-outline-danger Delete
+                  tr
+                    td test.org
+                    td
+                      span.badge.bg-warning Pending
+                    td 2024-11-15
+                    td Namecheap
+                    td
+                      .btn-group
+                        button.btn.btn-sm.btn-outline-primary Edit
+                        button.btn.btn-sm.btn-outline-info DNS
+                        button.btn.btn-sm.btn-outline-danger Delete
+                  tr
+                    td demo.net
+                    td
+                      span.badge.bg-success Active
+                    td 2025-01-20
+                    td Cloudflare
+                    td
+                      .btn-group
+                        button.btn.btn-sm.btn-outline-primary Edit
+                        button.btn.btn-sm.btn-outline-info DNS
+                        button.btn.btn-sm.btn-outline-danger Delete
+    
+    // Page-specific CSS
+    style.
+      /* Import page-specific CSS */
+      @import url('../../public/scss/pages/domain.css');
+    
+    // Page-specific JavaScript
+    script.
+      // Initialize page-specific plugins
+      $(document).ready(function() {
+        // Initialize DataTables
+        $('#domainTable').DataTable({
+          responsive: true,
+          pageLength: 10,
+          order: [[2, 'asc']]
+        });
+        
+        // Initialize Flatpickr
+        flatpickr("#domainDateRange", {
+          mode: "range",
+          dateFormat: "Y-m-d"
+        });
+        
+        // Initialize Select2
+        $('#domainStatusFilter').select2({
+          placeholder: 'Select status...',
+          allowClear: true
+        });
+        
+        $('#domainSearch').select2({
+          placeholder: 'Search domains...',
+          allowClear: true
+        });
+      });

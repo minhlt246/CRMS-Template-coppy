@@ -1,0 +1,178 @@
+extends ../_layouts/master
+
+block content
+  .chat-page
+    // Chat Container
+    .chat-container
+      // Chat Sidebar
+      .chat-sidebar
+        .sidebar-header
+          h3.sidebar-title Messages
+        .sidebar-content
+          .chat-list
+            .chat-item.active
+              .chat-avatar JD
+              .chat-info
+                .chat-name John Doe
+                .chat-last-message Hey, how are you?
+              .chat-meta
+                .chat-time 2m
+                .chat-unread 2
+            .chat-item
+              .chat-avatar JS
+              .chat-info
+                .chat-name Jane Smith
+                .chat-last-message Can we schedule a meeting?
+              .chat-meta
+                .chat-time 5m
+            .chat-item
+              .chat-avatar MJ
+              .chat-info
+                .chat-name Mike Johnson
+                .chat-last-message Thanks for the update
+              .chat-meta
+                .chat-time 1h
+            .chat-item
+              .chat-avatar AL
+              .chat-info
+                .chat-name Alice Lee
+                .chat-last-message I'll send the files soon
+              .chat-meta
+                .chat-time 2h
+            .chat-item
+              .chat-avatar BR
+              .chat-info
+                .chat-name Bob Roberts
+                .chat-last-message Great work on the project!
+              .chat-meta
+                .chat-time 3h
+      
+      // Chat Main
+      .chat-main
+        // Chat Header
+        .chat-header
+          .chat-user-info
+            .user-avatar JD
+            .user-details
+              .user-name John Doe
+              .user-status online
+          .chat-actions
+            button.btn.btn-sm.btn-outline-secondary
+              i.fa.fa-phone
+            button.btn.btn-sm.btn-outline-secondary
+              i.fa.fa-video
+            button.btn.btn-sm.btn-outline-secondary
+              i.fa.fa-ellipsis-h
+        
+        // Chat Messages
+        .chat-messages
+          .message.received
+            .message-avatar JD
+            .message-content
+              .message-text Hello! How can I help you today?
+              .message-time 10:30 AM
+          .message.sent
+            .message-content
+              .message-text Hi! I need help with my account settings.
+              .message-time 10:31 AM
+          .message.received
+            .message-avatar JD
+            .message-content
+              .message-text Sure! I can help you with that. What specific settings are you looking to change?
+              .message-time 10:32 AM
+          .message.sent
+            .message-content
+              .message-text I want to update my email notification preferences.
+              .message-time 10:33 AM
+          .message.received
+            .message-avatar JD
+            .message-content
+              .message-text Perfect! You can do that by going to Settings > Notifications > Email Preferences. Would you like me to walk you through it?
+              .message-time 10:34 AM
+          .message.sent
+            .message-content
+              .message-text Yes, that would be great!
+              .message-time 10:35 AM
+        
+        // Chat Input
+        .chat-input
+          .input-group
+            .input-field
+              textarea.form-control(placeholder="Type your message..." rows="1")
+            .input-actions
+              button.btn.btn-outline-secondary
+                i.fa.fa-paperclip
+              button.btn.btn-outline-secondary
+                i.fa.fa-smile
+              button.btn.btn-primary
+                i.fa.fa-paper-plane
+    
+    // Chat Notifications
+    .chat-notifications
+      .notification
+        .notification-header
+          .notification-title New Message
+          .notification-close
+            i.fa.fa-times
+        .notification-content
+          You have a new message from Jane Smith
+    
+    // Page-specific CSS
+    style.
+      /* Import page-specific CSS */
+      @import url('../../public/scss/pages/chat.css');
+    
+    // Page-specific JavaScript
+    script.
+      // Initialize page-specific functionality
+      $(document).ready(function() {
+        // Auto-resize textarea
+        $('.chat-input textarea').on('input', function() {
+          this.style.height = 'auto';
+          this.style.height = (this.scrollHeight) + 'px';
+        });
+        
+        // Send message on Enter key
+        $('.chat-input textarea').on('keypress', function(e) {
+          if (e.which === 13 && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+        
+        // Send message function
+        function sendMessage() {
+          const messageText = $('.chat-input textarea').val().trim();
+          if (messageText) {
+            // Add message to chat
+            addMessage(messageText, 'sent');
+            $('.chat-input textarea').val('').trigger('input');
+          }
+        }
+        
+        // Add message to chat
+        function addMessage(text, type) {
+          const messageHtml = `
+            <div class="message ${type}">
+              ${type === 'received' ? '<div class="message-avatar">JD</div>' : ''}
+              <div class="message-content">
+                <div class="message-text">${text}</div>
+                <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+              </div>
+            </div>
+          `;
+          $('.chat-messages').append(messageHtml);
+          $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
+        }
+        
+        // Chat item click
+        $('.chat-item').on('click', function() {
+          $('.chat-item').removeClass('active');
+          $(this).addClass('active');
+        });
+        
+        // Close notification
+        $('.notification-close').on('click', function() {
+          $(this).closest('.notification').fadeOut();
+        });
+      });

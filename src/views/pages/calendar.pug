@@ -1,0 +1,274 @@
+extends ../_layouts/master
+
+block content
+  .calendar-page
+    // Calendar Page Header
+    .page-header
+      .container-fluid
+        .row
+          .col-12
+            h1.page-title Calendar
+            p.page-description Manage your events and appointments
+    
+    // Calendar Filter Section
+    .calendar-filter
+      .container-fluid
+        .filter-row
+          .filter-group
+            label(for="calendarDateRange") Date Range
+            input#calendarDateRange.form-control.flatpickr-input(type="text" placeholder="Select date range")
+          .filter-group
+            label(for="calendarView") View
+            select#calendarView.form-control
+              option(value="month") Month
+              option(value="week") Week
+              option(value="day") Day
+          .filter-group
+            label(for="calendarCategory") Category
+            select#calendarCategory.form-control
+              option(value="") All Categories
+              option(value="meeting") Meeting
+              option(value="appointment") Appointment
+              option(value="event") Event
+              option(value="reminder") Reminder
+          .filter-group
+            button.btn.btn-primary Apply
+            button.btn.btn-secondary Reset
+    
+    // Calendar Content
+    .container-fluid
+      .row
+        .col-md-8
+          // Calendar Container
+          .calendar-container
+            .calendar-header
+              .calendar-title January 2024
+              .calendar-actions
+                .calendar-nav
+                  button.btn.btn-outline-secondary
+                    i.fa.fa-chevron-left
+                  button.btn.btn-outline-secondary
+                    i.fa.fa-chevron-right
+                .calendar-view
+                  button.btn.btn-primary.btn-sm Month
+                  button.btn.btn-outline-secondary.btn-sm Week
+                  button.btn.btn-outline-secondary.btn-sm Day
+            .calendar-body
+              .calendar-grid
+                .calendar-day-header Sun
+                .calendar-day-header Mon
+                .calendar-day-header Tue
+                .calendar-day-header Wed
+                .calendar-day-header Thu
+                .calendar-day-header Fri
+                .calendar-day-header Sat
+                
+                .calendar-day.other-month
+                  .day-number 31
+                .calendar-day
+                  .day-number 1
+                  .day-events
+                    .event.event-primary Team Meeting
+                .calendar-day
+                  .day-number 2
+                .calendar-day
+                  .day-number 3
+                  .day-events
+                    .event.event-success Client Call
+                .calendar-day
+                  .day-number 4
+                .calendar-day
+                  .day-number 5
+                .calendar-day
+                  .day-number 6
+                  .day-events
+                    .event.event-warning Project Review
+                .calendar-day
+                  .day-number 7
+                .calendar-day
+                  .day-number 8
+                .calendar-day
+                  .day-number 9
+                .calendar-day
+                  .day-number 10
+                  .day-events
+                    .event.event-info Training Session
+                .calendar-day
+                  .day-number 11
+                .calendar-day
+                  .day-number 12
+                .calendar-day
+                  .day-number 13
+                .calendar-day
+                  .day-number 14
+                .calendar-day
+                  .day-number 15
+                  .day-events
+                    .event.event-primary Monthly Review
+                    .event.event-success Team Lunch
+                .calendar-day
+                  .day-number 16
+                .calendar-day
+                  .day-number 17
+                .calendar-day
+                  .day-number 18
+                .calendar-day
+                  .day-number 19
+                .calendar-day
+                  .day-number 20
+                .calendar-day
+                  .day-number 21
+                .calendar-day
+                  .day-number 22
+                .calendar-day
+                  .day-number 23
+                .calendar-day
+                  .day-number 24
+                .calendar-day
+                  .day-number 25
+                .calendar-day
+                  .day-number 26
+                .calendar-day
+                  .day-number 27
+                .calendar-day
+                  .day-number 28
+                .calendar-day
+                  .day-number 29
+                .calendar-day
+                  .day-number 30
+                .calendar-day
+                  .day-number 31
+                .calendar-day.other-month
+                  .day-number 1
+                .calendar-day.other-month
+                  .day-number 2
+                .calendar-day.other-month
+                  .day-number 3
+                .calendar-day.other-month
+                  .day-number 4
+                .calendar-day.other-month
+                  .day-number 5
+                .calendar-day.other-month
+                  .day-number 6
+                .calendar-day.other-month
+                  .day-number 7
+        
+        .col-md-4
+          // Event List
+          .event-list
+            .event-list-header
+              .event-list-title Today's Events
+            .event-list-body
+              .event-item
+                .event-time 9:00 AM
+                .event-content
+                  .event-title Team Meeting
+                  .event-description Weekly team standup
+                .event-actions
+                  button.btn.btn-sm.btn-outline-primary
+                    i.fa.fa-edit
+                  button.btn.btn-sm.btn-outline-danger
+                    i.fa.fa-trash
+              .event-item
+                .event-time 2:00 PM
+                .event-content
+                  .event-title Client Call
+                  .event-description Discuss project requirements
+                .event-actions
+                  button.btn.btn-sm.btn-outline-primary
+                    i.fa.fa-edit
+                  button.btn.btn-sm.btn-outline-danger
+                    i.fa.fa-trash
+              .event-item
+                .event-time 4:30 PM
+                .event-content
+                  .event-title Project Review
+                  .event-description Review project progress
+                .event-actions
+                  button.btn.btn-sm.btn-outline-primary
+                    i.fa.fa-edit
+                  button.btn.btn-sm.btn-outline-danger
+                    i.fa.fa-trash
+    
+    // Event Modal
+    .modal.fade#eventModal(tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5.modal-title Add New Event
+            button.btn-close(type="button" data-bs-dismiss="modal")
+          .modal-body
+            .event-form
+              .form-group
+                label(for="eventTitle") Event Title
+                input#eventTitle.form-control(type="text" placeholder="Enter event title")
+              .form-group
+                label(for="eventDate") Date
+                input#eventDate.form-control.flatpickr-input(type="text" placeholder="Select date")
+              .form-group
+                label(for="eventTime") Time
+                input#eventTime.form-control(type="time")
+              .form-group
+                label(for="eventCategory") Category
+                select#eventCategory.form-select
+                  option(value="meeting") Meeting
+                  option(value="appointment") Appointment
+                  option(value="event") Event
+                  option(value="reminder") Reminder
+              .form-group
+                label(for="eventDescription") Description
+                textarea#eventDescription.form-control(rows="3" placeholder="Enter event description")
+          .modal-footer
+            button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Cancel
+            button.btn.btn-primary(type="button") Save Event
+    
+    // Page-specific CSS
+    style.
+      /* Import page-specific CSS */
+      @import url('../../public/scss/pages/calendar.css');
+    
+    // Page-specific JavaScript
+    script.
+      // Initialize page-specific plugins
+      $(document).ready(function() {
+        // Initialize Flatpickr for date range
+        flatpickr("#calendarDateRange", {
+          mode: "range",
+          dateFormat: "Y-m-d"
+        });
+        
+        // Initialize Flatpickr for event date
+        flatpickr("#eventDate", {
+          dateFormat: "Y-m-d"
+        });
+        
+        // Initialize Select2
+        $('#calendarView').select2({
+          placeholder: 'Select view...',
+          allowClear: true
+        });
+        
+        $('#calendarCategory').select2({
+          placeholder: 'Select category...',
+          allowClear: true
+        });
+        
+        $('#eventCategory').select2({
+          placeholder: 'Select category...',
+          allowClear: true
+        });
+        
+        // Calendar day click
+        $('.calendar-day').on('click', function() {
+          if (!$(this).hasClass('other-month')) {
+            $('#eventModal').modal('show');
+          }
+        });
+        
+        // Event item click
+        $('.event').on('click', function(e) {
+          e.stopPropagation();
+          // Handle event click
+          console.log('Event clicked:', $(this).text());
+        });
+      });
