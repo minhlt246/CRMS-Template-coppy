@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Xử Lý Đơn Hàng | CRMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <script src="assets/js/theme-script.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/tabler-icons/tabler-icons.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplebar/simplebar.min.css">
+    <link rel="stylesheet" href="assets/plugins/datatables/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" id="app-style">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- Topbar -->
+        <header class="navbar-header">
+            <div class="page-container topbar-menu">
+                <div class="d-flex align-items-center gap-2">
+                    <a href="index.html" class="logo">
+                        <span class="logo-light">
+                            <span class="logo-lg"><img src="assets/img/logo.svg" alt="logo"></span>
+                            <span class="logo-sm"><img src="assets/img/logo-small.svg" alt="small logo"></span>
+                        </span>
+                        <span class="logo-dark">
+                            <span class="logo-lg"><img src="assets/img/logo-white.svg" alt="dark logo"></span>
+                        </span>
+                    </a>
+                    <a id="mobile_btn" class="mobile-btn" href="#sidebar"><i class="ti ti-menu-deep fs-24"></i></a>
+                    <button class="sidenav-toggle-btn btn border-0 p-0" id="toggle_btn2"><i
+                            class="ti ti-arrow-bar-to-right"></i></button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown profile-dropdown d-flex align-items-center justify-content-center">
+                        <a href="javascript:void(0);"
+                            class="topbar-link dropdown-toggle drop-arrow-none position-relative"
+                            data-bs-toggle="dropdown">
+                            <img src="assets/img/users/user-40.jpg" width="38" class="rounded-1 d-flex"
+                                alt="user-image">
+                            <span class="online text-success"><i
+                                    class="ti ti-circle-filled d-flex bg-white rounded-circle border border-1 border-white"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-2">
+                            <div class="d-flex align-items-center bg-light rounded-3 p-2 mb-2">
+                                <img src="assets/img/users/user-40.jpg" class="rounded-circle" width="42" height="42"
+                                    alt="Img">
+                                <div class="ms-2">
+                                    <p class="fw-medium text-dark mb-0">Admin</p>
+                                </div>
+                            </div>
+                            <a href="login.html" class="dropdown-item text-danger">
+                                <i class="ti ti-logout me-1 fs-17 align-middle"></i>
+                                <span class="align-middle">Sign Out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <div>
+                    <a href="index.html" class="logo logo-normal"><img src="assets/img/logo.svg" alt="Logo"></a>
+                    <a href="index.html" class="logo-small"><img src="assets/img/logo-small.svg" alt="Logo"></a>
+                    <a href="index.html" class="dark-logo"><img src="assets/img/logo-white.svg" alt="Logo"></a>
+                </div>
+                <button class="sidenav-toggle-btn btn border-0 p-0 active" id="toggle_btn"><i
+                        class="ti ti-arrow-bar-to-left"></i></button>
+                <button class="sidebar-close"><i class="ti ti-x align-middle"></i></button>
+            </div>
+            <div class="sidebar-inner" data-simplebar>
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title"><span>Main Menu</span></li>
+                        <li>
+                            <ul>
+                                <li><a href="index.html"><i class="ti ti-dashboard"></i><span>Dashboard</span></a></li>
+                                <li><a href="sales.html"><i class="ti ti-shopping-cart"></i><span>Quản Lý
+                                            Sale</span></a></li>
+                                <li><a href="order-processing.html" class="active"><i
+                                            class="ti ti-settings"></i><span>Xử Lý Đơn Hàng</span></a></li>
+                                <li><a href="customers.html"><i class="ti ti-users"></i><span>Quản Lý Khách
+                                            Hàng</span></a></li>
+                                <li><a href="change-password.html"><i class="ti ti-lock"></i><span>Đổi Mật
+                                            Khẩu</span></a></li>
+                                <li><a href="activities.html"><i
+                                            class="ti ti-bounce-right"></i><span>Activities</span></a></li>
+                                <li><a href="blogs.html"><i class="ti ti-brand-blogger"></i><span>Blogs</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="d-flex align-items-center justify-content-between gap-2 mb-4 flex-wrap">
+                    <div>
+                        <h4 class="mb-1">Xử Lý Đơn Hàng</h4>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Xử Lý Đơn Hàng</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="gap-2 d-flex align-items-center flex-wrap">
+                        <a href="javascript:void(0);" class="btn btn-icon btn-outline-light shadow" title="Refresh"><i
+                                class="ti ti-refresh"></i></a>
+                    </div>
+                </div>
+
+                <!-- Filter -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row align-items-end">
+                            <div class="col-md-3">
+                                <label class="form-label">Trạng Thái</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Tất Cả</option>
+                                    <option value="pending">Chờ Xử Lý</option>
+                                    <option value="processing">Đang Xử Lý</option>
+                                    <option value="shipped">Đã Giao</option>
+                                    <option value="completed">Hoàn Thành</option>
+                                    <option value="cancelled">Đã Hủy</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Từ Ngày</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Đến Ngày</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-primary w-100"><i class="ti ti-search me-1"></i>Tìm Kiếm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table dataTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Mã Đơn</th>
+                                        <th>Khách Hàng</th>
+                                        <th>Tổng Tiền</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Ngày Tạo</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#DH001</td>
+                                        <td>Nguyễn Văn A</td>
+                                        <td>5,000,000 VNĐ</td>
+                                        <td><span class="badge badge-soft-warning">Chờ Xử Lý</span></td>
+                                        <td>15/03/2025</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <button class="btn btn-sm btn-outline-info"
+                                                    onclick="viewOrderDetail('#DH001')">
+                                                    <i class="ti ti-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-success"
+                                                    onclick="updateStatus('#DH001', 'processing')">
+                                                    <i class="ti ti-check"></i> Duyệt
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="cancelOrder('#DH001')">
+                                                    <i class="ti ti-x"></i> Hủy
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#DH002</td>
+                                        <td>Trần Thị B</td>
+                                        <td>3,500,000 VNĐ</td>
+                                        <td><span class="badge badge-soft-info">Đang Xử Lý</span></td>
+                                        <td>14/03/2025</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <button class="btn btn-sm btn-outline-info"
+                                                    onclick="viewOrderDetail('#DH002')">
+                                                    <i class="ti ti-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-info"
+                                                    onclick="updateStatus('#DH002', 'shipped')">
+                                                    <i class="ti ti-truck"></i> Đã Giao
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#DH003</td>
+                                        <td>Lê Văn C</td>
+                                        <td>7,200,000 VNĐ</td>
+                                        <td><span class="badge badge-soft-success">Hoàn Thành</span></td>
+                                        <td>13/03/2025</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <button class="btn btn-sm btn-outline-info"
+                                                    onclick="viewOrderDetail('#DH003')">
+                                                    <i class="ti ti-eye"></i> Xem
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary"
+                                                    onclick="printOrder('#DH003')">
+                                                    <i class="ti ti-printer"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#DH004</td>
+                                        <td>Phạm Thị D</td>
+                                        <td>2,100,000 VNĐ</td>
+                                        <td><span class="badge badge-soft-danger">Đã Hủy</span></td>
+                                        <td>12/03/2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-info"
+                                                onclick="viewOrderDetail('#DH004')">
+                                                <i class="ti ti-eye"></i> Xem
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Chi Tiết Đơn Hàng -->
+            <div class="modal fade" id="orderDetailModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Chi Tiết Đơn Hàng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6 class="mb-3">Mã Đơn: <span id="orderIdDetail"></span></h6>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6 class="text-muted">Thông Tin Khách Hàng</h6>
+                                    <p class="mb-1"><strong>Họ Tên:</strong> <span id="customerName">Nguyễn Văn A</span>
+                                    </p>
+                                    <p class="mb-1"><strong>SĐT:</strong> 0901234567</p>
+                                    <p class="mb-0"><strong>Địa chỉ:</strong> 123 Nguyễn Huệ, Q1, TP.HCM</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-muted">Thông Tin Đơn</h6>
+                                    <p class="mb-1"><strong>Ngày tạo:</strong> <span id="orderDate">15/03/2025</span>
+                                    </p>
+                                    <p class="mb-1"><strong>Trạng thái:</strong> <span id="orderStatus"
+                                            class="badge badge-soft-warning">Chờ Xử Lý</span></p>
+                                    <p class="mb-0"><strong>PTTT:</strong> Tiền Mặt</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <h6 class="mb-3">Sản Phẩm</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Số Lượng</th>
+                                            <th>Giá</th>
+                                            <th>Tổng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="orderProducts">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Sản phẩm A</td>
+                                            <td>3</td>
+                                            <td>100,000 VNĐ</td>
+                                            <td>300,000 VNĐ</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Sản phẩm B</td>
+                                            <td>2</td>
+                                            <td>200,000 VNĐ</td>
+                                            <td>400,000 VNĐ</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="4" class="text-end">Tổng cộng:</th>
+                                            <th>700,000 VNĐ</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" onclick="printOrder('')">
+                                <i class="ti ti-printer me-1"></i> In Đơn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer d-block d-md-flex justify-content-between text-md-start text-center">
+                <p class="mb-md-0 mb-1">Copyright &copy;
+                    <script>document.write(new Date().getFullYear())</script> <a href="javascript:void(0);"
+                        class="link-primary text-decoration-underline">CRMS</a>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/simplebar/simplebar.min.js"></script>
+    <script src="assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        function updateStatus (orderId, status) {
+            const statusLabels = {
+                'processing': 'Đang Xử Lý',
+                'shipped': 'Đã Giao',
+                'completed': 'Hoàn Thành'
+            };
+
+            if (confirm(`Bạn có chắc muốn cập nhật trạng thái đơn hàng ${orderId} thành "${statusLabels[status]}"?`)) {
+                alert(`Đã cập nhật trạng thái đơn hàng ${orderId} thành công!`);
+                location.reload();
+            }
+        }
+
+        function cancelOrder (orderId) {
+            if (confirm(`Bạn có chắc muốn hủy đơn hàng ${orderId}?`)) {
+                alert(`Đã hủy đơn hàng ${orderId}!`);
+                location.reload();
+            }
+        }
+
+        function viewOrderDetail (orderId) {
+            document.getElementById('orderIdDetail').textContent = orderId;
+            const modal = new bootstrap.Modal(document.getElementById('orderDetailModal'));
+            modal.show();
+        }
+
+        function printOrder (orderId) {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
